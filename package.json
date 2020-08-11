@@ -1,6 +1,6 @@
 {
   "name": "auto-update-sample",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Auto update test",
   "main": "index.js",
   "scripts": {
