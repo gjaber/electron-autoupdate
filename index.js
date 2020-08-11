@@ -3,6 +3,7 @@ const { autoUpdater } = require('electron-updater');
 
 let mainWindow;
 
+
 function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
@@ -11,17 +12,21 @@ function createWindow () {
       nodeIntegration: true,
     },
   });
+  mainWindow.webContents.openDevTools();
   mainWindow.loadFile('index.html');
+  autoUpdater.checkForUpdatesAndNotify();
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
-  mainWindow.once('ready-to-show', () => {
-    autoUpdater.checkForUpdatesAndNotify();
-  });
+  console.log('antes do update');
+  
 }
 
 app.on('ready', () => {
   createWindow();
+  
+    autoUpdater.checkForUpdatesAndNotify();
+  
 });
 
 app.on('window-all-closed', function () {
@@ -41,6 +46,7 @@ ipcMain.on('app_version', (event) => {
 });
 
 autoUpdater.on('update-available', () => {
+  console.log('update disponivel');
   mainWindow.webContents.send('update_available');
 });
 
