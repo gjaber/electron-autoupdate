@@ -22,11 +22,5 @@
     "type" : "git",
     "url" : "https://github.com/gjaber/electron-autoupdater-example.git"
   }
-  {
-    "build":
-      "publish": {
-        "provider": "s3",
-        "bucket": "neo.desktop.update"
-      }
-    }
+  
 }
